@@ -55,7 +55,6 @@ analyze_results() {
     local total_warnings
     total_errors=$(grep -c "Error\|FAILED\|❌" pipeline_results.log 2>/dev/null || echo "0")
     total_warnings=$(grep -c "warning\|⚠️" pipeline_results.log 2>/dev/null || echo "0")
-    
     echo -e "Errors: ${RED}$total_errors${NC}"
     echo -e "Warnings: ${YELLOW}$total_warnings${NC}"
     
