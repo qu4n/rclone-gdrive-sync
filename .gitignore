@@ -1,0 +1,30 @@
+# Exclude sync directories and data
+synced_folders/
+bisync_workdir/
+
+# Exclude log files
+*.log
+sync.log
+
+# Exclude rclone config (contains sensitive data)
+rclone.conf
+.config/
+
+# Exclude temporary files
+*.tmp
+*.temp
+*~
+
+# Exclude system files
+.DS_Store
+Thumbs.db
+
+# Exclude backup files
+*.bak
+*.backup
+
+# Exclude editor files
+.vscode/
+.idea/
+*.swp
+*.swo
