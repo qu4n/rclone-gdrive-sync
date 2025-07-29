@@ -27,7 +27,7 @@ run_test() {
     echo -e "\n${BLUE}🔍 Testing: $test_name${NC}"
     
     if eval "$test_command"; then
-        if [ $? -eq $expected_exit_code ]; then
+        if [ $? -eq "$expected_exit_code" ]; then
             echo -e "${GREEN}✅ PASSED${NC}"
             ((PASSED_TESTS++))
         else
@@ -35,7 +35,7 @@ run_test() {
             ((FAILED_TESTS++))
         fi
     else
-        if [ $? -eq $expected_exit_code ]; then
+        if [ $? -eq "$expected_exit_code" ]; then
             echo -e "${GREEN}✅ PASSED${NC}"
             ((PASSED_TESTS++))
         else

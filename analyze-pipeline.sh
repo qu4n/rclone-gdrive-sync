@@ -76,8 +76,10 @@ analyze_results() {
     echo -e "Pipeline Status: ${BLUE}$status${NC}"
     
     # Count total issues
-    local errors=$(grep -c "Error\|FAILED\|❌" pipeline_results.log || echo "0")
-    local warnings=$(grep -c "warning\|⚠️" pipeline_results.log || echo "0")
+    local errors
+    local warnings
+    errors=$(grep -c "Error\|FAILED\|❌" pipeline_results.log 2>/dev/null || echo "0")
+    warnings=$(grep -c "warning\|⚠️" pipeline_results.log 2>/dev/null || echo "0")
     
     echo -e "Total Errors: ${RED}$errors${NC}"
     echo -e "Total Warnings: ${YELLOW}$warnings${NC}"
