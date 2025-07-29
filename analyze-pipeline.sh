@@ -58,8 +58,15 @@ analyze_results() {
     if grep -q "PASSED\|FAILED" pipeline_results.log; then
         local passed
         local failed
-        passed=$(grep -c "✅ PASSED" pipeline_results.log 2>/dev/null || echo "0")
-        failed=$(grep -c "❌ FAILED" pipeline_results.log 2>/dev/null || echo "0")
+        passed=$(grep -c "✅ PASSED" pipeline_results.log 2>/dev/null | head -1 || echo "0")
+        failed=$(grep -c "❌ FAILED" pipeline_results.log 2>/dev/null | head -1 || echo "0")
+        
+        # Ensure we have valid integers
+        passed=${passed//[^0-9]/}
+        failed=${failed//[^0-9]/}
+        passed=${passed:-0}
+        failed=${failed:-0}
+        
         echo -e "Tests Passed: ${GREEN}$passed${NC}"
         echo -e "Tests Failed: ${RED}$failed${NC}"
         
@@ -80,8 +87,15 @@ analyze_results() {
     # Count total issues
     local errors
     local warnings
-    errors=$(grep -c "Error\|FAILED\|❌" pipeline_results.log 2>/dev/null || echo "0")
-    warnings=$(grep -c "warning\|⚠️" pipeline_results.log 2>/dev/null || echo "0")
+    errors=$(grep -c "Error\|FAILED\|❌" pipeline_results.log 2>/dev/null | head -1 || echo "0")
+    warnings=$(grep -c "warning\|⚠️" pipeline_results.log 2>/dev/null | head -1 || echo "0")
+    
+    # Ensure we have valid integers
+    errors=${errors//[^0-9]/}
+    warnings=${warnings//[^0-9]/}
+    errors=${errors:-0}
+    warnings=${warnings:-0}
+    
     echo -e "Total Errors: ${RED}$errors${NC}"
     echo -e "Total Warnings: ${YELLOW}$warnings${NC}"
     
