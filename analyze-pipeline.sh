@@ -56,8 +56,10 @@ analyze_results() {
     # Test results
     echo -e "\n${YELLOW}🧪 Test Results:${NC}"
     if grep -q "PASSED\|FAILED" pipeline_results.log; then
-        local passed=$(grep -c "✅ PASSED" pipeline_results.log || echo "0")
-        local failed=$(grep -c "❌ FAILED" pipeline_results.log || echo "0")
+        local passed
+        local failed
+        passed=$(grep -c "✅ PASSED" pipeline_results.log 2>/dev/null || echo "0")
+        failed=$(grep -c "❌ FAILED" pipeline_results.log 2>/dev/null || echo "0")
         echo -e "Tests Passed: ${GREEN}$passed${NC}"
         echo -e "Tests Failed: ${RED}$failed${NC}"
         
