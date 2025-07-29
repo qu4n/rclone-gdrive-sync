@@ -47,9 +47,6 @@ sync_folder() {
     mkdir -p "$workdir"
     mkdir -p "$BISYNC_WORKDIR"
     
-    # Build rclone bisync command with safer options
-    local rclone_options="--workdir=\"$workdir\" --verbose --log-file=\"$LOG_FILE\" --log-level INFO --create-empty-src-dirs --compare size,modtime --resilient --recover"
-    
     if [ "$is_preview" = "true" ]; then
         echo "=== PREVIEW MODE: Showing what would change ==="
         echo ""
@@ -124,6 +121,12 @@ fi
 FOLDER_NAME="$1"
 IS_INIT="false"
 IS_PREVIEW="false"
+
+# Basic input validation - allow spaces but block potentially dangerous characters
+if [[ "$FOLDER_NAME" =~ [^a-zA-Z0-9._\ -] ]]; then
+    echo "Error: Folder name contains invalid characters. Only alphanumeric, spaces, dots, hyphens, and underscores are allowed."
+    exit 1
+fi
 
 # Parse arguments
 for arg in "$@"; do
