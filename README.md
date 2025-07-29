@@ -14,7 +14,7 @@ A powerful bash script for bidirectional synchronization between Google Drive fo
 ## Prerequisites
 
 - `rclone` installed and configured with Google Drive
-- Bash shell (Linux/macOS/WSL)
+- Bash shell (tested on Ubuntu 24.04 LTS, should work on Linux/macOS/WSL)
 - Google Drive remote configured in rclone
 
 ## Installation
