@@ -4,6 +4,7 @@
 [![Security Scan](https://img.shields.io/badge/security-scanned-green?logo=github)](https://github.com/qu4n/rclone-gdrive-sync/actions/workflows/quality.yml)
 [![Code Quality](https://img.shields.io/badge/shellcheck-passing-brightgreen?logo=github)](https://github.com/qu4n/rclone-gdrive-sync/actions/workflows/quality.yml)
 [![Tests](https://img.shields.io/badge/tests-11%2F11%20passing-brightgreen?logo=github)](https://github.com/qu4n/rclone-gdrive-sync/actions/workflows/quality.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A powerful bash script for bidirectional synchronization between Google Drive folders and local directories using rclone bisync.
 
@@ -146,7 +147,16 @@ rm -rf bisync_workdir/[folder_name]
 
 ## License
 
-This project is open source. Feel free to use and modify as needed.
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+### Why MIT License?
+- ✅ **Freedom to use**: Use in personal and commercial projects
+- ✅ **Freedom to modify**: Adapt the code to your needs
+- ✅ **Freedom to distribute**: Share your modifications
+- ✅ **No warranty**: Clear liability protection
+- ✅ **Simple**: Easy to understand and comply with
 
 ## Changelog
 
